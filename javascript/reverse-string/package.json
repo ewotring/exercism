@@ -1,0 +1,11 @@
+{
+  "name": "reverse-string",
+  "version": "1.0.0",
+  "description": "For example: input: \"cool\" output: \"looc\"",
+  "main": "reverse-string.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
