@@ -4,15 +4,17 @@
 //
 
 var Year = function (input) {
-//
-// YOUR CODE GOES HERE
-//  
+    this.input = input;
 };
 
 Year.prototype.isLeap = function () {
-//
-// YOUR CODE GOES HERE
-//
+    if (this.input % 4 === 0 && this.input % 100 != 0) {
+        return true;
+    } else if (this.input % 400 === 0) {
+        return true;
+    } else {
+        return false;
+    }
 };
 
 module.exports = Year;
