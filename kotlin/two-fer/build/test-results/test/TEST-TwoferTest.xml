@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TwoferTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2018-01-15T04:28:36" hostname="Eriks-MacBook-Pro.local" time="0.01">
+  <properties/>
+  <testcase name="noNameGiven" classname="TwoferTest" time="0.008"/>
+  <testcase name="emptyStringGiven" classname="TwoferTest" time="0.0"/>
+  <testcase name="aNameGiven" classname="TwoferTest" time="0.0"/>
+  <testcase name="anotherNameGiven" classname="TwoferTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
