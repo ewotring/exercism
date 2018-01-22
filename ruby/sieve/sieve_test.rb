@@ -11,7 +11,7 @@ class SieveTest < Minitest::Test
   end
 
   def test_find_first_prime
-    skip
+    # skip
     expected = [2]
     assert_equal expected, Sieve.new(2).primes
   end
