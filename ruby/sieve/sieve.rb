@@ -7,5 +7,6 @@ class Sieve
   end
   def primes
     return @new_spectrum unless @input >= 2
+    @new_spectrum = @range
   end
 end
