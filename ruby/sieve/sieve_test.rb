@@ -23,7 +23,7 @@ class SieveTest < Minitest::Test
   end
 
   def test_limit_is_prime
-    skip
+    # skip
     expected = [2, 3, 5, 7, 11, 13]
     assert_equal expected, Sieve.new(13).primes
   end
