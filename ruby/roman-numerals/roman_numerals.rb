@@ -27,9 +27,13 @@ Integer.class_eval do
         roman_result << "X"
         input -= 10
       end
-      if input >= 40# && input < 50
+      if input >= 40 && input < 50
         roman_result << "XL"
         input -= 40
+      end
+      if input >= 50# && input < 40
+        roman_result << "L"
+        input -= 50
       end
     end
     roman_result

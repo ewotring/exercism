@@ -50,7 +50,7 @@ class RomanNumeralsTest < Minitest::Test
   end
 
   def test_59
-    skip
+    # skip
     assert_equal 'LIX', 59.to_roman
   end
 
