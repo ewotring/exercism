@@ -85,7 +85,7 @@ class RomanNumeralsTest < Minitest::Test
   end
 
   def test_1024
-    skip
+    # skip
     assert_equal 'MXXIV', 1024.to_roman
   end
 
