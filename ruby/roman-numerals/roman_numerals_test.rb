@@ -80,7 +80,7 @@ class RomanNumeralsTest < Minitest::Test
   end
 
   def test_911
-    skip
+    # skip
     assert_equal 'CMXI', 911.to_roman
   end
 
