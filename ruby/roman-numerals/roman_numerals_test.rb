@@ -60,7 +60,7 @@ class RomanNumeralsTest < Minitest::Test
   end
 
   def test_141
-    skip
+    # skip
     assert_equal 'CXLI', 141.to_roman
   end
 
