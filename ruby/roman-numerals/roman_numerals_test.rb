@@ -70,7 +70,7 @@ class RomanNumeralsTest < Minitest::Test
   end
 
   def test_402
-    skip
+    # skip
     assert_equal 'CDII', 402.to_roman
   end
 

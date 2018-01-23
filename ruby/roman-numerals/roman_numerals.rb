@@ -39,9 +39,13 @@ Integer.class_eval do
         roman_result << "XC"
         input -= 90
       end
-      if input >= 100# && input < 90
+      if input >= 100 && input < 400
         roman_result << "C"
         input -= 100
+      end
+      if input >= 400# && input < 500
+        roman_result << "CD"
+        input -= 400
       end
     end
     roman_result
