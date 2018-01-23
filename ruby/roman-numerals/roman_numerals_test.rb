@@ -30,7 +30,7 @@ class RomanNumeralsTest < Minitest::Test
   end
 
   def test_6
-    skip
+    # skip
     assert_equal 'VI', 6.to_roman
   end
 
