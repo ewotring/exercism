@@ -65,7 +65,7 @@ class RomanNumeralsTest < Minitest::Test
   end
 
   def test_163
-    skip
+    # skip
     assert_equal 'CLXIII', 163.to_roman
   end
 
