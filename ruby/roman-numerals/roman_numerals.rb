@@ -15,11 +15,14 @@ Integer.class_eval do
         roman_result << "IV"
         input -= 4
       end
-      if input >= 5
+      if input >= 5 && input < 9
         roman_result << "V"
         input -= 5
       end
-      
+      if input >= 9 && input < 10
+        roman_result << "IX"
+        input -= 9
+      end
     end
     roman_result
   end
