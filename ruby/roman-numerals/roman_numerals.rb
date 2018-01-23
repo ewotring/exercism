@@ -7,9 +7,15 @@ Integer.class_eval do
     input = self
     roman_result = ""
     while input > 0
-      if input < 5
+      if input < 4
         roman_result << "I"
         input -= 1
+        puts "roman_result is #{roman_result}"
+      end
+      if input == 4
+        roman_result << "IV"
+        input -= 4
+        puts "roman_result is #{roman_result}"
       end
     end
     roman_result
