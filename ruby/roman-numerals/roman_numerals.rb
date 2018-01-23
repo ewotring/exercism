@@ -6,17 +6,20 @@ Integer.class_eval do
   def to_roman
     input = self
     roman_result = ""
-    while input > 0
+    while input >= 1
       if input < 4
         roman_result << "I"
         input -= 1
-        puts "roman_result is #{roman_result}"
       end
-      if input == 4
+      if input >= 4 && input < 5
         roman_result << "IV"
         input -= 4
-        puts "roman_result is #{roman_result}"
       end
+      if input >= 5
+        roman_result << "V"
+        input -= 5
+      end
+      
     end
     roman_result
   end
