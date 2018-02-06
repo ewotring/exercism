@@ -1,4 +1,13 @@
+require_relative 'primes'
+
 class Prime
+  def self.prime?(iterable)
+    (2...iterable).each do |test_element|
+      if iterable % test_element == 0
+        return false
+      end
+    end
+  end
   def self.nth(n)
     # build array of prime numbers to the length of the input n
     if n == 0
@@ -13,23 +22,22 @@ class Prime
       return 3
     end
 
+    prime_list = []
     i = 2
-    prime_list = [2]
-    
-=begin
-Take a number as input
-that number is the length of the array
-
-=end
-    while prime_list.length <= n
-      prime_list.each do |prime|
-        if i % prime == 0
-          prime_list.push(i)
-        end
+    while prime_list.length < n
+      if prime?(i)
+        prime_list.push(i)
       end
+      puts "i is #{i}"
       i += 1
     end
-    puts "prime_list is #{prime_list}"
+
+    puts "prime_list after loop is #{prime_list}"
     return prime_list[-1]
+
   end
+end
+
+module BookKeeping
+  VERSION = 1 # Where the version number matches the one in the test.
 end
