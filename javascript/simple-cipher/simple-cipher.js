@@ -1,5 +1,7 @@
+var randomString = require("randomstring")
+
 class Cipher {
-  constructor(key) {
+  constructor( key = randomString.generate({ length: 100, charset: 'abcdefghijklmnopqrstuvwxyz'})) {
     this.key = key
   }
 }
