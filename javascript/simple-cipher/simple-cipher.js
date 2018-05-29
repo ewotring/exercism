@@ -6,15 +6,25 @@ class Cipher {
       length: 100,
       charset: 'abcdefghijklmnopqrstuvwxyz'})) {
     this.key = key
+    this.shiftString = 'abcdefghijklmnopqrstuvwxyz'
   }
-encode(input) {
-  let outputArray = []
-  for (let i = 0; i < input.length; i++) {
-    outputArray.push(this.key.charAt(i))
+  encode(input) {
+    let encodeOutputArray = []
+    for (let i = 0; i < input.length; i++) {
+      let keyAdd = this.shiftString.indexOf(input.charAt(i))
+      encodeOutputArray.push(this.key.charAt(i + keyAdd))
+    }
+    let encodeOutputString = encodeOutputArray.join('')
+    return encodeOutputString
   }
-  let outputString = outputArray.join('')
-  return outputString
-}
+  decode(input) {
+    let decodeOutputArray = []
+    for (let i = 0; i < input.length; i++) {
+      decodeOutputArray.push('a')
+    }
+    let decodeOutputString = decodeOutputArray.join('')
+    return decodeOutputString
+  }
 }
 
 module.exports = Cipher
