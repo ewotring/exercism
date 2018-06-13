@@ -14,6 +14,7 @@ class Cipher {
     for (let i = 0; i < input.length; i++) {
       let keyAdd = this.shiftString.indexOf(input.charAt(i)) % 26
       console.log(`encode keyAdd is ${keyAdd}`)
+      console.log(`${this.key.charAt((i + keyAdd) % 26)}`)
       encodeOutputArray.push(this.key.charAt((i + keyAdd) % 26))
     }
     let encodeOutputString = encodeOutputArray.join('')
@@ -27,8 +28,14 @@ class Cipher {
       // experiment with modulus
       let keyAddDecode = this.shiftString.indexOf(input.charAt(i)) % 26
       console.log(`input[i] is ${input.charAt(i)}`)
+      console.log(`${this.shiftString.charAt(i)}`)
+      console.log(`${this.key.charAt(i)}`)
+      console.log(`next thing is ${this.key.charAt(keyAddDecode)}`)
+      console.log(`next next thing is ${this.key.charAt(i - keyAddDecode)}`)
+      console.log(`and another thing is ${this.key.charAt((keyAddDecode - i) % 26)}`)
+      console.log(`and another thing is ${this.key.charAt((keyAddDecode - i) % 26)}`)
       console.log(`keyAddDecode is ${keyAddDecode}`)
-      decodeOutputArray.push(this.key.charAt((i + keyAddDecode) % 26))
+      decodeOutputArray.push(this.key.charAt((keyAddDecode - i) % 26))
     }
     let decodeOutputString = decodeOutputArray.join('')
     console.log(`decodeOutputString is ${decodeOutputString}`)

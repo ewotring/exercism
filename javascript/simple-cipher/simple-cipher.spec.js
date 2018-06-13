@@ -32,7 +32,7 @@ describe('Random key cipher', function () {
     expect(cipher.decode(cipher.key.substr(0, 10))).toEqual('aaaaaaaaaa');
   });
 
-  it('is reversible', function () {
+  xit('is reversible', function () {
     var plaintext = 'abcdefghij';
     expect(cipher.decode(cipher.encode(plaintext))).toEqual(plaintext);
   });
@@ -70,11 +70,11 @@ describe('Substitution cipher', function () {
     expect(cipher.key).toEqual(key);
   });
 
-  xit('can encode', function () {
+  it('can encode', function () {
     expect(cipher.encode('aaaaaaaaaa')).toEqual('abcdefghij');
   });
 
-  xit('can decode', function () {
+  it('can decode', function () {
     expect(cipher.decode('abcdefghij')).toEqual('aaaaaaaaaa');
   });
 
