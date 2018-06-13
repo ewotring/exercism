@@ -35,7 +35,8 @@ class Cipher {
       console.log(`and another thing is ${this.key.charAt((keyAddDecode - i) % 26)}`)
       console.log(`and another thing is ${this.key.charAt((keyAddDecode - i) % 26)}`)
       console.log(`keyAddDecode is ${keyAddDecode}`)
-      decodeOutputArray.push(this.key.charAt((keyAddDecode - i) % 26))
+      // decodeOutputArray.push(this.key.charAt((keyAddDecode - i) % 26))
+      decodeOutputArray.push(this.key.charAt((keyAddDecode - this.shiftString.charAt(i)) % 26))
     }
     let decodeOutputString = decodeOutputArray.join('')
     console.log(`decodeOutputString is ${decodeOutputString}`)
