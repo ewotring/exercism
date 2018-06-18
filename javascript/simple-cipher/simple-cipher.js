@@ -9,7 +9,9 @@ class Cipher {
     this.key = key
     this.shiftString = 'abcdefghijklmnopqrstuvwxyz'
     for (let i = 0; i < key.length; i++) {
-      if (!this.shiftString.includes(key.charAt(i))) {
+      console.log(!!!this.key)
+      console.log(this.key.length)
+      if (!this.shiftString.includes(key.charAt(i)) || this.key.length == 0) {
         throw Error('Bad key')
       }
     }
