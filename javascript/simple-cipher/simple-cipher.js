@@ -13,14 +13,10 @@ class Cipher {
   encode(input) {
     let encodeOutputArray = []
     for (let i = 0; i < input.length; i++) {
-      // let keyAdd = this.shiftString.indexOf(input.charAt(i))
       let inputNumber = this.shiftString.indexOf(input.charAt(i))
       let keyNumber = this.shiftString.indexOf(this.key.charAt(i))
       let outputNumber = (inputNumber + keyNumber) % 26
       let outputLetter = this.shiftString.charAt(outputNumber)
-      // console.log(`encode keyAdd is ${keyAdd}`)
-      // console.log(`${this.key.charAt((i + keyAdd) % 26)}`)
-      // encodeOutputArray.push(this.key.charAt((i + keyAdd) % 26))
       encodeOutputArray.push(outputLetter)
     }
     let encodeOutputString = encodeOutputArray.join('')
@@ -32,29 +28,18 @@ class Cipher {
     let decodeOutputArray = []
     console.log(`input is ${input}`)
     for (let i = 0; i < input.length; i++) {
-      // experiment with modulus
-      // let keyAddDecode = this.shiftString.indexOf(input.charAt(i))
       let inputNumber = this.shiftString.indexOf(input.charAt(i))
+      console.log(`inputNumber is ${inputNumber}`)
       let keyNumber = this.shiftString.indexOf(this.key.charAt(i))
+      console.log(`keyNumber is ${keyNumber}`)
       let outputNumber = (inputNumber - keyNumber) % 26
+      // let outputNumberPre = (inputNumber - keyNumber) % 26
+      if (outputNumber < 0) {
+        outputNumber = 26 + outputNumber
+      }
+      console.log(`outputNumber is ${outputNumber}`)
       let outputLetter = this.shiftString.charAt(outputNumber)
-      // console.log(`input[i] is ${input.charAt(i)}`)
-      // console.log(`shiftstring ${this.shiftString.charAt(i)}`)
-      // console.log(`key ${this.key.charAt(i)}`)
-      // console.log(`next thing is ${this.key.charAt(keyAddDecode)}`)
-      // console.log(`next next thing is ${this.key.charAt(i - keyAddDecode)}`)
-      // console.log(`and another thing is ${this.key.charAt((keyAddDecode - i) % 26)}`)
-      // console.log(`and another thing is ${this.key.charAt((keyAddDecode - i) % 26)}`)
-      // console.log(`and another thing is ${(keyAddDecode - this.shiftString.charAt(i))}`)
-      // console.log(`${NaN % 26}`)
-      // console.log(`${this.key.charAt(NaN % 26)}`)
-      // console.log(`keyAddDecode is ${keyAddDecode}`)
-      // console.log(`keyAddDecode is ${keyAddDecode}`)
-      // console.log(`i is ${i}`)
-      // console.log(`shiftString value is ${}`)
-      // decodeOutputArray.push(this.key.charAt((keyAddDecode - i) % 26))
       decodeOutputArray.push(outputLetter)
-      // decodeOutputArray.push(this.key.charAt((keyAddDecode - this.shiftString.charAt(i)) % 26))
     }
     let decodeOutputString = decodeOutputArray.join('')
     console.log(`decodeOutputString is ${decodeOutputString}`)
