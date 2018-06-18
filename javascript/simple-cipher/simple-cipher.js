@@ -20,29 +20,22 @@ class Cipher {
       encodeOutputArray.push(outputLetter)
     }
     let encodeOutputString = encodeOutputArray.join('')
-    console.log(`encodeOutputString is ${encodeOutputString}`)
     return encodeOutputString
   }
 
   decode(input) {
     let decodeOutputArray = []
-    console.log(`input is ${input}`)
     for (let i = 0; i < input.length; i++) {
       let inputNumber = this.shiftString.indexOf(input.charAt(i))
-      console.log(`inputNumber is ${inputNumber}`)
       let keyNumber = this.shiftString.indexOf(this.key.charAt(i))
-      console.log(`keyNumber is ${keyNumber}`)
       let outputNumber = (inputNumber - keyNumber) % 26
-      // let outputNumberPre = (inputNumber - keyNumber) % 26
       if (outputNumber < 0) {
         outputNumber = 26 + outputNumber
       }
-      console.log(`outputNumber is ${outputNumber}`)
       let outputLetter = this.shiftString.charAt(outputNumber)
       decodeOutputArray.push(outputLetter)
     }
     let decodeOutputString = decodeOutputArray.join('')
-    console.log(`decodeOutputString is ${decodeOutputString}`)
     return decodeOutputString
   }
 }
