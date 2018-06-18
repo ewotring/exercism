@@ -8,6 +8,11 @@ class Cipher {
       charset: 'abcdefghijklmnopqrstuvwxyz'})) {
     this.key = key
     this.shiftString = 'abcdefghijklmnopqrstuvwxyz'
+    for (let i = 0; i < key.length; i++) {
+      if (!this.shiftString.includes(key.charAt(i))) {
+        throw Error('Bad key')
+      }
+    }
   }
 
   encode(input) {

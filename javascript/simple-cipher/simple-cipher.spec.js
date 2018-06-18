@@ -41,19 +41,19 @@ describe('Random key cipher', function () {
 /* eslint-disable no-new */
 
 describe('Incorrect key cipher', function () {
-  xit('throws an error with an all caps key', function () {
+  it('throws an error with an all caps key', function () {
     expect(function () {
       new Cipher('ABCDEF');
     }).toThrow(new Error('Bad key'));
   });
 
-  xit('throws an error with a numeric key', function () {
+  it('throws an error with a numeric key', function () {
     expect(function () {
       new Cipher('12345');
     }).toThrow(new Error('Bad key'));
   });
 
-  xit('throws an error with an empty key', function () {
+  it('throws an error with an empty key', function () {
     expect(function () {
       new Cipher('');
     }).toThrow(new Error('Bad key'));
