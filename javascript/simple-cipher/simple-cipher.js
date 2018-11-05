@@ -1,11 +1,12 @@
 var randomString = require("randomstring")
 
-class Cipher {
+export class Cipher {
   constructor(
     // Consider making the length random, with a length of at least 100.
     key = randomString.generate({
       length: 100,
-      charset: 'abcdefghijklmnopqrstuvwxyz'})) {
+      charset: 'abcdefghijklmnopqrstuvwxyz'})
+      ) {
     this.key = key
     this.shiftString = 'abcdefghijklmnopqrstuvwxyz'
     for (let i = 0; i < key.length; i++) {
@@ -46,8 +47,6 @@ class Cipher {
     return decodeOutputString
   }
 }
-
-module.exports = Cipher
 
 /*
 Had to really break my steps down. I was trying to do way too much on each line, so I
