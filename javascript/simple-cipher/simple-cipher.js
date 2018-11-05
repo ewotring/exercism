@@ -23,9 +23,20 @@ export class Cipher {
 
   encode(input) {
     let encodeOutputArray = []
+    let encodedKey = ''
+    let keyArray = this.key.split('')
+    if (input.length > keyArray.length) {
+      let keyMultiplier = 1 + (input.length / keyArray.length)
+      let encodedKeyArray = []
+      for (let i = 0; i < keyMultiplier; i++) {
+        Array.prototype.push.apply(encodedKeyArray, keyArray)
+      }
+      encodedKey = encodedKeyArray.join('')
+    }
+    encodedKey = encodedKey || this.key
     for (let i = 0; i < input.length; i++) {
       let inputNumber = this.shiftString.indexOf(input.charAt(i))
-      let keyNumber = this.shiftString.indexOf(this.key.charAt(i))
+      let keyNumber = this.shiftString.indexOf(encodedKey.charAt(i))
       let outputNumber = (inputNumber + keyNumber) % 26
       let outputLetter = this.shiftString.charAt(outputNumber)
       encodeOutputArray.push(outputLetter)
