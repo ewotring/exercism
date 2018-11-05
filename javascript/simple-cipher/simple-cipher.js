@@ -1,27 +1,42 @@
 var randomString = require("randomstring")
 
-class Cipher {
+export class Cipher {
   constructor(
     // Consider making the length random, with a length of at least 100.
     key = randomString.generate({
       length: 100,
-      charset: 'abcdefghijklmnopqrstuvwxyz'})) {
+      charset: 'abcdefghijklmnopqrstuvwxyz'})
+      ) {
     this.key = key
     this.shiftString = 'abcdefghijklmnopqrstuvwxyz'
     for (let i = 0; i < key.length; i++) {
-      console.log(!!!this.key)
-      console.log(this.key.length)
-      if (!this.shiftString.includes(key.charAt(i)) || this.key.length == 0) {
+      // console.log(!!!this.key)
+      // console.log(this.key.length)
+      if (!this.shiftString.includes(key.charAt(i))) {
         throw Error('Bad key')
       }
+    }
+    if (key.length == 0) {
+      throw Error('Bad key')
     }
   }
 
   encode(input) {
     let encodeOutputArray = []
+    let encodedKey = ''
+    let keyArray = this.key.split('')
+    if (input.length > keyArray.length) {
+      let keyMultiplier = 1 + (input.length / keyArray.length)
+      let encodedKeyArray = []
+      for (let i = 0; i < keyMultiplier; i++) {
+        Array.prototype.push.apply(encodedKeyArray, keyArray)
+      }
+      encodedKey = encodedKeyArray.join('')
+    }
+    encodedKey = encodedKey || this.key
     for (let i = 0; i < input.length; i++) {
       let inputNumber = this.shiftString.indexOf(input.charAt(i))
-      let keyNumber = this.shiftString.indexOf(this.key.charAt(i))
+      let keyNumber = this.shiftString.indexOf(encodedKey.charAt(i))
       let outputNumber = (inputNumber + keyNumber) % 26
       let outputLetter = this.shiftString.charAt(outputNumber)
       encodeOutputArray.push(outputLetter)
@@ -46,8 +61,6 @@ class Cipher {
     return decodeOutputString
   }
 }
-
-module.exports = Cipher
 
 /*
 Had to really break my steps down. I was trying to do way too much on each line, so I
