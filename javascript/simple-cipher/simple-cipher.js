@@ -8,6 +8,7 @@ export class Cipher {
       charset: 'abcdefghijklmnopqrstuvwxyz'})
       ) {
     this.key = key
+    this.alphabetLength = 26
     this.shiftString = 'abcdefghijklmnopqrstuvwxyz'
     for (let i = 0; i < key.length; i++) {
       // console.log(!!!this.key)
@@ -37,7 +38,7 @@ export class Cipher {
     for (let i = 0; i < input.length; i++) {
       let inputNumber = this.shiftString.indexOf(input.charAt(i))
       let keyNumber = this.shiftString.indexOf(encodedKey.charAt(i))
-      let outputNumber = (inputNumber + keyNumber) % 26
+      let outputNumber = (inputNumber + keyNumber) % this.shiftString.length
       let outputLetter = this.shiftString.charAt(outputNumber)
       encodeOutputArray.push(outputLetter)
     }
@@ -50,9 +51,9 @@ export class Cipher {
     for (let i = 0; i < input.length; i++) {
       let inputNumber = this.shiftString.indexOf(input.charAt(i))
       let keyNumber = this.shiftString.indexOf(this.key.charAt(i))
-      let outputNumber = (inputNumber - keyNumber) % 26
+      let outputNumber = (inputNumber - keyNumber) % this.shiftString.length
       if (outputNumber < 0) {
-        outputNumber = 26 + outputNumber
+        outputNumber = this.shiftString.length + outputNumber
       }
       let outputLetter = this.shiftString.charAt(outputNumber)
       decodeOutputArray.push(outputLetter)
