@@ -3,23 +3,33 @@ var randomString = require("randomstring")
 export class Cipher {
   constructor(
     // Consider making the length random, with a length of at least 100.
-    key = randomString.generate({
-      length: 100,
-      charset: 'abcdefghijklmnopqrstuvwxyz'})
+    key = this.generateRandomKey(),
+    // key = randomString.generate({
+    //   length: 100,
+    //   charset: 'abcdefghijklmnopqrstuvwxyz'})
       ) {
-    this.key = key
-    this.alphabetLength = 26
-    this.shiftString = 'abcdefghijklmnopqrstuvwxyz'
-    for (let i = 0; i < key.length; i++) {
+    this.key = key;
+    this.shiftString = 'abcdefghijklmnopqrstuvwxyz';
+    this.keyLength = 100;
+    for (let i = 0; i < key.length; i += 1) {
       // console.log(!!!this.key)
       // console.log(this.key.length)
       if (!this.shiftString.includes(key.charAt(i))) {
-        throw Error('Bad key')
+        throw Error('Bad key');
       }
     }
-    if (key.length == 0) {
-      throw Error('Bad key')
+    if (key.length === 0) {
+      throw Error('Bad key');
     }
+  }
+
+  generateRandomKey() {
+    let outputString = '';
+    // const charSet = this.shiftString;
+    for (let i = 0; i < this.keyLength; i += 1) {
+      outputString += this.shiftString.charAt(Math.floor(Math.random() * this.shiftString.length));
+    }
+    return outputString;
   }
 
   encode(input) {
