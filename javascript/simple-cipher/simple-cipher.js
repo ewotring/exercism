@@ -17,18 +17,28 @@ export class Cipher {
       // this.shiftString,
       // this.keyLength,
     );
+    for (let i = 0; i < this.shiftString.length; i += 1) {
+      console.log(`shiftString character is ${this.shiftString[i]}`);
+      console.log(this.shiftString.charCodeAt(i));
+    }
     // console.log(`constructor this.keyLength is ${this.keyLength}`);
     for (let i = 0; i < this.key.length; i += 1) {
       // console.log(!!!this.key)
       // console.log(this.key.length)
       // console.log(this.shiftString.charCodeAt(this.key.charAt(i)));
-      console.log(this.key.charAt(i));
-      console.log(this.shiftString.charCodeAt(this.key.charAt(i)));
-      console.log(Number.isNaN(this.shiftString.charCodeAt(this.key.charAt(i))));
-      let isItNaN = Number.isNaN(this.shiftString.charCodeAt(this.key.charAt(i)));
+      // console.log(this.key.charAt(i));
+      console.log(this.key.charCodeAt(i));
+      // console.log(this.shiftString.charCodeAt(this.key.charAt(i)));
+      // console.log(Number.isNaN(this.shiftString.charCodeAt(this.key.charAt(i))));
+      // let isItNaN = Number.isNaN(this.shiftString.charCodeAt(this.key.charAt(i)));
       // console.log(`is it a NaN? ${isItNaN}`);
-      if (!this.shiftString.includes(this.key.charAt(i))) {
-      // if (Number.isNaN(this.shiftString.charCodeAt(this.key.charAt(i)))) {
+      // if (!this.shiftString.includes(this.key.charAt(i))) {
+      const lowerCaseAUniCode = 97;
+      const lowerCaseZUniCode = 122;
+      if (
+        this.key.charCodeAt(i) < lowerCaseAUniCode
+        || this.key.charCodeAt(i) > lowerCaseZUniCode
+      ) {
         throw Error('Bad key');
       }
     }
