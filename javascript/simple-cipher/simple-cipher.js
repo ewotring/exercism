@@ -2,38 +2,51 @@
 
 export class Cipher {
   constructor(
+    key,
     // Consider making the length random, with a length of at least 100.
-    key = this.generateRandomKey(),
+    // key = this.generateRandomKey(),
     // key = randomString.generate({
     //   length: 100,
-    //   charset: 'abcdefghijklmnopqrstuvwxyz'})
-      ) {
-    this.key = key;
+    //   charset: 'abcdefghijklmnopqrstuvwxyz',
+    // }),
+  ) {
+    // this.key = key;
     this.shiftString = 'abcdefghijklmnopqrstuvwxyz';
     this.keyLength = 100;
-    for (let i = 0; i < key.length; i += 1) {
+    this.key = typeof key !== 'undefined' ? key : this.generateRandomKey(
+      // this.shiftString,
+      // this.keyLength,
+    );
+    // console.log(`constructor this.keyLength is ${this.keyLength}`);
+    for (let i = 0; i < this.key.length; i += 1) {
       // console.log(!!!this.key)
       // console.log(this.key.length)
-      if (!this.shiftString.includes(key.charAt(i))) {
+      if (!this.shiftString.includes(this.key.charAt(i))) {
         throw Error('Bad key');
       }
     }
-    if (key.length === 0) {
+    if (this.key.length === 0) {
       throw Error('Bad key');
     }
   }
 
-  generateRandomKey() {
+  generateRandomKey(shiftString = this.shiftString, keyLength = this.keyLength) {
+    // console.log('generate random key!!!!!!!');
     let outputString = '';
-    // const charSet = this.shiftString;
-    for (let i = 0; i < this.keyLength; i += 1) {
-      outputString += this.shiftString.charAt(Math.floor(Math.random() * this.shiftString.length));
+    // console.log(`keyLength is ${keyLength}`);
+    // console.log(`shiftString is ${shiftString}`);
+    // const charSet = shiftString;
+    for (let i = 0; i < keyLength; i += 1) {
+      // console.log(`i is ${i}`);
+      outputString += shiftString.charAt(Math.floor(Math.random() * shiftString.length));
+      // console.log(`character to enter is ${shiftString.charAt(Math.floor(Math.random() * shiftString.length))}`);
     }
+    // console.log(`Random key is: ${outputString}`);
     return outputString;
   }
 
   encode(input) {
-    let encodeOutputArray = []
+    const encodeOutputArray = []
     let encodedKey = ''
     let keyArray = this.key.split('')
     if (input.length > keyArray.length) {
