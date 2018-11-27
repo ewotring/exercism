@@ -27,7 +27,7 @@ export class Cipher {
       // console.log(this.key.length)
       // console.log(this.shiftString.charCodeAt(this.key.charAt(i)));
       // console.log(this.key.charAt(i));
-      console.log(this.key.charCodeAt(i));
+      // console.log(this.key.charCodeAt(i));
       // console.log(this.shiftString.charCodeAt(this.key.charAt(i)));
       // console.log(Number.isNaN(this.shiftString.charCodeAt(this.key.charAt(i))));
       // let isItNaN = Number.isNaN(this.shiftString.charCodeAt(this.key.charAt(i)));
