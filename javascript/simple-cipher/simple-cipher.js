@@ -18,8 +18,8 @@ export class Cipher {
       // this.keyLength,
     );
     for (let i = 0; i < this.shiftString.length; i += 1) {
-      console.log(`shiftString character is ${this.shiftString[i]}`);
-      console.log(this.shiftString.charCodeAt(i));
+      // console.log(`shiftString character is ${this.shiftString[i]}`);
+      // console.log(this.shiftString.charCodeAt(i));
     }
     // console.log(`constructor this.keyLength is ${this.keyLength}`);
     for (let i = 0; i < this.key.length; i += 1) {
