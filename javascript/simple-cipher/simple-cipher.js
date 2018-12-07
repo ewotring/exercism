@@ -88,9 +88,10 @@ export class Cipher {
 
   decode(input) {
     let decodeOutputArray = []
+    let encodedKey = this.key;
     for (let i = 0; i < input.length; i++) {
       let inputNumber = this.shiftString.indexOf(input.charAt(i))
-      let keyNumber = this.shiftString.indexOf(this.key.charAt(i))
+      let keyNumber = this.shiftString.indexOf(encodedKey.charAt(i))
       let outputNumber = (inputNumber - keyNumber) % this.shiftString.length
       if (outputNumber < 0) {
         outputNumber = this.shiftString.length + outputNumber
