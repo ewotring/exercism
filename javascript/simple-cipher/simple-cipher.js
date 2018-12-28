@@ -1,15 +1,16 @@
 
+const shiftString = 'abcdefghijklmnopqrstuvwxyz';
+const keyLength = 100;
+const lowerCaseAUniCode = 97;
+const lowerCaseZUniCode = 122;
+
 export class Cipher {
   constructor(
     key,
     // Consider making the length random, with a length of at least 100.
   ) {
-    this.shiftString = 'abcdefghijklmnopqrstuvwxyz';
-    this.keyLength = 100;
     this.key = typeof key !== 'undefined' ? key : this.generateRandomKey();
     for (let i = 0; i < this.key.length; i += 1) {
-      const lowerCaseAUniCode = 97;
-      const lowerCaseZUniCode = 122;
       if (
         this.key.charCodeAt(i) < lowerCaseAUniCode
         || this.key.charCodeAt(i) > lowerCaseZUniCode
@@ -22,7 +23,7 @@ export class Cipher {
     }
   }
 
-  generateRandomKey(shiftString = this.shiftString, keyLength = this.keyLength) {
+  generateRandomKey() {
     let outputString = '';
     for (let i = 0; i < keyLength; i += 1) {
       outputString += shiftString.charAt(Math.floor(Math.random() * shiftString.length));
@@ -33,9 +34,9 @@ export class Cipher {
   encode(input) {
     const encodeOutputArray = []
     let encodedKey = ''
-    let keyArray = this.key.split('')
+    const keyArray = this.key.split('')
     if (input.length > keyArray.length) {
-      let keyMultiplier = 1 + (input.length / keyArray.length)
+      const keyMultiplier = 1 + (input.length / keyArray.length)
       let encodedKeyArray = []
       for (let i = 0; i < keyMultiplier; i++) {
         Array.prototype.push.apply(encodedKeyArray, keyArray)
@@ -44,11 +45,11 @@ export class Cipher {
     }
     encodedKey = encodedKey || this.key
     for (let i = 0; i < input.length; i++) {
-      let inputNumber = this.shiftString.indexOf(input.charAt(i))
-      let keyNumber = this.shiftString.indexOf(encodedKey.charAt(i))
+      let inputNumber = shiftString.indexOf(input.charAt(i))
+      let keyNumber = shiftString.indexOf(encodedKey.charAt(i))
       let inputVsKey = inputNumber + keyNumber;
-      let outputNumber = (inputVsKey + this.shiftString.length) % this.shiftString.length
-      let outputLetter = this.shiftString.charAt(outputNumber)
+      let outputNumber = (inputVsKey + shiftString.length) % shiftString.length
+      let outputLetter = shiftString.charAt(outputNumber)
       encodeOutputArray.push(outputLetter)
     }
     let encodeOutputString = encodeOutputArray.join('')
@@ -59,11 +60,11 @@ export class Cipher {
     let decodeOutputArray = []
     let encodedKey = this.key;
     for (let i = 0; i < input.length; i++) {
-      let inputNumber = this.shiftString.indexOf(input.charAt(i))
-      let keyNumber = this.shiftString.indexOf(encodedKey.charAt(i))
+      let inputNumber = shiftString.indexOf(input.charAt(i))
+      let keyNumber = shiftString.indexOf(encodedKey.charAt(i))
       let inputVsKey = inputNumber - keyNumber;
-      let outputNumber = (inputVsKey + this.shiftString.length) % this.shiftString.length
-      let outputLetter = this.shiftString.charAt(outputNumber)
+      let outputNumber = (inputVsKey + shiftString.length) % shiftString.length
+      let outputLetter = shiftString.charAt(outputNumber)
       decodeOutputArray.push(outputLetter)
     }
     let decodeOutputString = decodeOutputArray.join('')
